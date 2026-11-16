@@ -1,4 +1,58 @@
 #include <iostream>
+#include <string>
+#include <clocale>
+
+using namespace std;
+
+// а) Перегруженная функция для массива целых чисел
+int countElements(int arr[], int size) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 != 0) {
+            count++;
+        }
+    }
+    return count;
+}
+
+// б) Перегруженная функция для строки
+int countElements(string str) {
+    int count = 0;
+    bool inWord = false;
+    
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] != ' ') {
+            if (!inWord) {
+                count++;
+                inWord = true;
+            }
+        } else {
+            inWord = false;
+        }
+    }
+    return count;
+}
+
+int main() {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+    
+    // Тест 1: Массив целых чисел
+    int myArray[] = {1, 2, 3, 4, 5, 7};
+    int arrSize = sizeof(myArray) / sizeof(myArray[0]);
+    cout << "Количество нечетных элементов в массиве: " 
+         << countElements(myArray, arrSize) << endl;
+         
+    // Тест 2: Строка
+    string myString = "Привет мир это тестовая строка";
+    cout << "Количество слов в строке: " 
+         << countElements(myString) << endl;
+         
+    return 0;
+}
+
+
+
+#include <iostream>
 #include <clocale>
 #include <cmath>
 #include <cstdarg>
